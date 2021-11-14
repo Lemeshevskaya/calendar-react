@@ -4,17 +4,8 @@ export default class CreateLable extends Component {
   render() {
     const {lable} = this.props;
     const {times} = this.props;
-    const period = [];
-    times.map((time) => {
-      if (time === lable.timeStart) {
-        period.push(times.indexOf(time));
-      } else if (time === lable.timeEnd) {
-        period.push(times.indexOf(time));
-      }
-      return (period)
-    })
-    const startTime = period[0];
-    const endTime = period[1]
+    const startTime = times.indexOf(lable.timeStart);
+    const endTime = times.indexOf(lable.timeEnd);
     return (
       <div className="card"
       style={{
