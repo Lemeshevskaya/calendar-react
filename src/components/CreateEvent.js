@@ -41,7 +41,7 @@ export default class CreateEvent extends Component {
         timeEnd: this.state.timeEnd,
       };
       const Lable = (
-      <CreateLable lable = {data}/>);
+      <CreateLable lable = {data} times = {timeHour}/>);
       var lables = this.state.lable.slice();
       lables.push(Lable);
       this.setState({ lable: lables });
@@ -106,15 +106,14 @@ export default class CreateEvent extends Component {
                 value="Submit"
                 className="btn btn-info btn-block mt-4 btn_submit"
               />
-              {this.state.lable}
             </form>
           </div>
         </div>
         <div className= 'grid day-calendar'>
         <DayHours time={timeList}></DayHours>
-        <DayField time={timeHour}>{this.state.lable}</DayField>
+        <DayField time={timeHour} lable={this.state.lable}></DayField>
       </div>
-      </div>
+    </div>
     )
   }
 }

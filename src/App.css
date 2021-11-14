@@ -6,6 +6,7 @@ body {
 }
 .day-calendar {
   background-color: darkgray;
+  grid-template-columns: 1fr 5fr;
 }
 .hour{
   border: 1px solid darkred;
@@ -18,8 +19,10 @@ body {
 }
 .grid {
   display: grid;
-  grid-template-columns: 1fr 5fr;
 }
-.absolut {
-  position: absolute;
+.gridrow {
+  grid-template-rows: repeat(3, 12px)
+}
+.bluecolor {
+  background-color: cadetblue;
 }

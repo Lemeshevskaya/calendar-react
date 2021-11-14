@@ -7,11 +7,11 @@ function DayHours(props) {
     timeList.map((time,index) => {
       return (
         <div key ={index}>
-          <div className='row1'>
+          <div className='row1 bluecolor'>
             {time}
           </div>
-          <div className='row1'></div>
-          <div className='row1'></div>
+          <div className='row1 bluecolor'></div>
+          <div className='row1 bluecolor'></div>
           <div className='row1'>
             :30
           </div>
@@ -28,17 +28,14 @@ function DayHours(props) {
 }
 
 function DayField(props) {
-  const timeHours = props.time;
-  const listField = 
-  timeHours.map((time,index) => {
-    let times = time;
-    return (
-      <div key={index} className={classnames('row1', times)}>
-      </div>
-    )
-  });
+  const lableNew = props.lable;
+  const timePeriod = props.time;
+  const timeLength = timePeriod.length;
   return (
-    <div>{listField}</div>
+    <div className = "grid" style={{gridTemplateRows: `repeat(${timeLength}, 12px)`}}>
+      {lableNew}
+    </div>
+    
   )
 }
 

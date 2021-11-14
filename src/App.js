@@ -6,7 +6,7 @@ import CreateEvent from './components/CreateEvent'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <h1>My calendar</h1>
       <Date></Date>
       <CreateEvent></CreateEvent>
