@@ -7,16 +7,16 @@ export default class CreateLable extends Component {
     const startTime = times.indexOf(lable.timeStart);
     const endTime = times.indexOf(lable.timeEnd);
     return (
-      <div className="card"
+      <div className="lable"
       style={{
         gridRowStart: `${startTime}`,
         gridRowEnd: `${endTime}`
       }}>
-        <h3 className="card-header">{lable.eventname}</h3>
-        <div className="card-body">
-          <p>{lable.location}</p>
-          <div>{lable.timeStart}</div>
-          <div>{lable.timeEnd}</div>
+        <h6 className="lable-item">{lable.eventname}</h6>
+        <p className="lable-item">{lable.location}</p>
+        <div className="lable-item">
+          <span>{lable.timeStart} - </span>
+          <span>{lable.timeEnd}</span>
         </div>
       </div>
     )

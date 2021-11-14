@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {uniqueId} from 'lodash';
 import TextFieldGroup from '../common/TextFieldGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import isEmpty from '../validation/is-empty';
@@ -24,11 +25,11 @@ export default class CreateEvent extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    if(isEmpty(this.state.eventname) || isEmpty(this.state.location)) {
+    if(isEmpty(this.state.eventname) || isEmpty(this.state.location) || isEmpty(this.state.timeStart) || isEmpty(this.state.timeEnd)) {
       this.setState({
-        error: 'Event name and location field must be filled'
+        error: 'All fields must be filled'
       });
-    } else if(timeHour.indexOf(this.state.timeStart) > timeHour.indexOf(this.state.timeEnd)) {
+    } else if(timeHour.indexOf(this.state.timeStart) >= timeHour.indexOf(this.state.timeEnd)) {
       this.setState({
         error: 'The start time must be less than the end time of the event'
       });
@@ -41,7 +42,7 @@ export default class CreateEvent extends Component {
         timeEnd: this.state.timeEnd,
       };
       const Lable = (
-      <CreateLable lable = {data} times = {timeHour}/>);
+      <CreateLable lable = {data} times = {timeHour} key = {uniqueId()}/>);
       var lables = this.state.lable.slice();
       lables.push(Lable);
       this.setState({ lable: lables });
@@ -60,16 +61,15 @@ export default class CreateEvent extends Component {
 
     return (
       <div className="create-event">
-        <h2 className="display-4 text-center">Create event</h2>
-        <div className="row">
-          <div className="col-md-8 m-auto">
+        <h2 className="text-center">Create event</h2>
+        <div className="row form-event">
+          <div className="col m-auto">
             <form onSubmit={this.onSubmit}>
               <TextFieldGroup
                 placeholder="Name event"
                 name="eventname"
                 value={this.state.eventname}
                 onChange={this.onChange}
-                
                 info="Name event"
               />
               <TextFieldGroup
@@ -77,7 +77,6 @@ export default class CreateEvent extends Component {
                 name="location"
                 value={this.state.location}
                 onChange={this.onChange}
-           
                 info="Location event"
               />
               <SelectListGroup
@@ -86,7 +85,6 @@ export default class CreateEvent extends Component {
                 value={this.state.timeStart}
                 onChange={this.onChange}
                 options={options}
-               
                 info="Start time"
               />
               <SelectListGroup
@@ -95,24 +93,23 @@ export default class CreateEvent extends Component {
                 value={this.state.timeEnd}
                 onChange={this.onChange}
                 options={options}
-              
                 info="End time"
               />
-              <div>
+              <div className = 'error'>
                  {this.state.error}
               </div>
               <input
                 type="submit"
                 value="Submit"
-                className="btn btn-info btn-block mt-4 btn_submit"
+                className="btn btn-primary button-form"
               />
             </form>
           </div>
         </div>
         <div className= 'grid day-calendar'>
-        <DayHours time={timeList}></DayHours>
-        <DayField time={timeHour} lable={this.state.lable}></DayField>
-      </div>
+          <DayHours time={timeList}></DayHours>
+          <DayField time={timeHour} lable={this.state.lable}></DayField>
+        </div>
     </div>
     )
   }

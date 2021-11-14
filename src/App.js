@@ -1,5 +1,4 @@
 import './App.css';
-import Calendar from './components/Calendar';
 import Date from './components/Data';
 import CreateEvent from './components/CreateEvent'
 

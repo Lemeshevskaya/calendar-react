@@ -1,28 +1,86 @@
+:root {
+  --blue: #5085A5;
+  --darkblue: #31708E;
+  --ligthblue: #8FC1E3;
+}
+
 .App {
   text-align: center;
 }
 body {
   margin: 0 auto;
 }
-.day-calendar {
-  background-color: darkgray;
-  grid-template-columns: 1fr 5fr;
+h1 {
+  background-color: var(--blue);
+  padding: 40px;
+  color: white;
+  border-radius: 5px;
 }
-.hour{
-  border: 1px solid darkred;
+h2 {
+  margin: 30px;
+  color: var(--darkblue);
+}
+.day-calendar {
+  background-color: #F7F9FB;
+  grid-template-columns: 1fr 7fr;
+}
+.colorDark {
+  background-color: var(--darkblue);
+}
+.rowHight {
+  height: 12px;
+  border: none;
+  color: white;
+  padding-right: 5px;
 }
 .hour-number {
-  background-color: darkseagreen;
-}
-.row1 {
-  height: 12px;
+  text-align: right;
 }
 .grid {
   display: grid;
 }
-.gridrow {
-  grid-template-rows: repeat(3, 12px)
+.colorLight {
+  background-color: var(--blue);
 }
-.bluecolor {
-  background-color: cadetblue;
+.lable {
+  background-color: #8FC1E3;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  padding-left: 15px;
+  border-radius: 5px;
+}
+.lable h6 {
+  margin: 0;
+  color: #214d61;
+}
+.lable p {
+  margin-bottom: 0;
+}
+.lable-item {
+  flex-shrink: 0;
+  flex-basis: 20px;
+}
+.form-event {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.button-form {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: white;
+  margin: 20px;
+}
+.error {
+  color: red;
+}
+.today-data {
+  color: var(--darkblue);
+  font-size: 14px;
 }

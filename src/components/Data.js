@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export default function Data() {
   return (
-    <div>
+    <div className = 'today-data'>
       {moment().format('MMMM Do YYYY, h:mm:ss a')}
     </div>
   )

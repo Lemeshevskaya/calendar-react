@@ -93,6 +93,7 @@ const timeHour = [
   '9.30 pm',
   '9.40 pm',
   '9.50 pm',
+  '10.00 pm'
 ]
   
 

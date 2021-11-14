@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 
 function DayHours(props) {
   const timeList = props.time;
@@ -7,16 +6,16 @@ function DayHours(props) {
     timeList.map((time,index) => {
       return (
         <div key ={index}>
-          <div className='row1 bluecolor'>
+          <div className='rowHight colorLight'>
             {time}
           </div>
-          <div className='row1 bluecolor'></div>
-          <div className='row1 bluecolor'></div>
-          <div className='row1'>
+          <div className='rowHight colorLight'></div>
+          <div className='rowHight colorLight'></div>
+          <div className='rowHight colorDark'>
             :30
           </div>
-          <div className='row1'></div>
-          <div className='row1'></div>
+          <div className='rowHight colorDark'></div>
+          <div className='rowHight colorDark'></div>
         </div>
       )
     });
@@ -30,8 +29,9 @@ function DayHours(props) {
 function DayField(props) {
   const lableNew = props.lable;
   const timePeriod = props.time;
-  const timeLength = timePeriod.length;
+  const timeLength = timePeriod.length - 2;
   return (
+    // create grid template
     <div className = "grid" style={{gridTemplateRows: `repeat(${timeLength}, 12px)`}}>
       {lableNew}
     </div>
