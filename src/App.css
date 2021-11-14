@@ -55,6 +55,7 @@ h2 {
   font-size: 14px;
   padding-left: 15px;
   border-radius: 5px;
+  border: 1px solid var(--blue);
 }
 .lable h6 {
   margin: 0;
