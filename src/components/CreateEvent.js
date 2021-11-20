@@ -15,8 +15,14 @@ export default class CreateEvent extends Component {
       location: '',
       timeStart: '',
       timeEnd: '',
+      startTimeLable: '',
+      endTimeLable: '',
+      startLableColumn: '',
+      endLableColumn: '',
       error: '',
-      lable: []
+      lable: [],
+      col1: timeHour.reduce((a, v) => ({ ...a, [v]: 0}), {}),
+      col2: timeHour.reduce((a, v) => ({ ...a, [v]: 0}), {})
     };
 
     this.onChange = this.onChange.bind(this);
@@ -25,24 +31,61 @@ export default class CreateEvent extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    const startTimeLable = timeHour.indexOf(this.state.timeStart);
+    const endTimeLable = timeHour.indexOf(this.state.timeEnd);
+    let startLableColumn;
+    let endLableColumn;
+    
     if(isEmpty(this.state.eventname) || isEmpty(this.state.location) || isEmpty(this.state.timeStart) || isEmpty(this.state.timeEnd)) {
       this.setState({
         error: 'All fields must be filled'
       });
-    } else if(timeHour.indexOf(this.state.timeStart) >= timeHour.indexOf(this.state.timeEnd)) {
+    } else if(startTimeLable >= endTimeLable) {
       this.setState({
         error: 'The start time must be less than the end time of the event'
       });
-    }
-    else {
+    } else {
+
+      const labletimes = timeHour.slice(startTimeLable,endTimeLable);
+      const col1 = this.state.col1;
+      const col2 = this.state.col2;
+
+      for (let elem of labletimes) {
+          if(col1[elem] !== 0) {
+              if(col2[elem] !== 0) {
+                this.setState({
+                  error: 'Two events already have a given time'
+                }); 
+                return;
+              } else {
+                for (let elem of labletimes) {
+                  col2[elem] = 1;
+                  startLableColumn = 2;
+                  endLableColumn = 3;
+                }
+                break;
+              }
+        } else {
+          col1[elem] = 1;
+          startLableColumn = 1;
+          endLableColumn = 3;
+        }
+      };
+
       const data = {
         eventname: this.state.eventname,
         location: this.state.location,
         timeStart: this.state.timeStart,
         timeEnd: this.state.timeEnd,
+        startTimeLable: startTimeLable,
+        endTimeLable: endTimeLable,
+        startLableColumn: startLableColumn,
+        endLableColumn: endLableColumn,
       };
+      console.log(col1, col2, data);
+
       const Lable = (
-      <CreateLable lable = {data} times = {timeHour} key = {uniqueId()}/>);
+      <CreateLable lable = {data} key = {uniqueId()}/>);
       var lables = this.state.lable.slice();
       lables.push(Lable);
       this.setState({ lable: lables });

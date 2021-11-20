@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
 export default class CreateLable extends Component {
+  
   render() {
+
     const {lable} = this.props;
-    const {times} = this.props;
-    const startTime = times.indexOf(lable.timeStart);
-    const endTime = times.indexOf(lable.timeEnd);
+    const startTimeLable = lable.startTimeLable;
+    const endTimeLable = lable.endTimeLable;
+    const startLableColumn = lable.startLableColumn;
+    const endLableColumn =lable.endLableColumn;
+    
+
     return (
       <div className="lable"
       style={{
-        gridRowStart: `${startTime}`,
-        gridRowEnd: `${endTime}`
+        gridRowStart: `${startTimeLable}`,
+        gridRowEnd: `${endTimeLable}`,
+        gridColumnStart: `${startLableColumn}`,
+        gridColumnEnd: `${endLableColumn}`,
       }}>
         <h6 className="lable-item">{lable.eventname}</h6>
         <p className="lable-item">{lable.location}</p>

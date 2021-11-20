@@ -32,7 +32,7 @@ function DayField(props) {
   const timeLength = timePeriod.length - 2;
   return (
     // create grid template
-    <div className = "grid" style={{gridTemplateRows: `repeat(${timeLength}, 12px)`}}>
+    <div className = "grid gridField" style={{gridTemplateRows: `repeat(${timeLength}, 12px)`}}>
       {lableNew}
     </div>
     
